@@ -4,4 +4,5 @@ build:
 run:
 	make build
 	docker build -t iot-demo .
+	docker rm -f iot-demo
 	docker run -d --restart=always --name iot-demo -p 8060:8080 iot-demo
