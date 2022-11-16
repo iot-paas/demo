@@ -1,18 +1,5 @@
-FROM golang:1.18
+FROM alpine
 
-WORKDIR /app
-COPY go.* ./
-
-RUN go env && go mod download
-
-COPY . .
-RUN go build  -tags 'osusergo,netgo' \
-    -v -o bin/demo *.go
-
-FROM alpine as running
-
-WORKDIR /app
-
-COPY --from=builder /app/bin /app/
+COPY demo /app/
 
 CMD ["/app/demo"]
