@@ -83,5 +83,34 @@ func main() {
 			Humidity:    gofakeit.Number(0, 100),
 		})
 	})
+
+	r.POST("/api/iot/user/login", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"roles":        []string{"admin"},
+			"introduction": "I am a super administrator",
+			"avatar":       "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+			"name":         "Super Admin",
+			"token":        "xxxx00001",
+			"code":         20000,
+		})
+	})
+
+	r.GET("/api/iot/user/info", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"roles":        []string{"admin"},
+			"introduction": "I am a super administrator",
+			"avatar":       "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif",
+			"name":         "Super Admin",
+			"token":        "xxxx00001",
+			"code":         20000,
+		})
+	})
+	r.POST("/api/iot/user/logout", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{
+			"data": "success",
+			"code": 20000,
+		})
+	})
+
 	r.Run(":8080") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
