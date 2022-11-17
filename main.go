@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/brianvoe/gofakeit"
 	"github.com/gin-gonic/gin"
@@ -77,7 +78,7 @@ func main() {
 		c.JSON(http.StatusOK, DeviceData{
 			ID:          deviceInfo.ID,
 			DataID:      gofakeit.Number(1, 100000),
-			Time:        gofakeit.Date().Format("2006-01-02 15:04:05"),
+			Time:        time.Now().Format("2006-01-02 15:04:05"),
 			Temperature: gofakeit.Number(0, 40),
 			Humidity:    gofakeit.Number(0, 100),
 		})
